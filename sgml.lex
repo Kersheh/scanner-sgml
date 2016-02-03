@@ -13,30 +13,32 @@ char tokenString[MAXTOKENLEN + 1];
 %}
 
 digit       [0-9]
-number      {digit}+
+number      [-+]?{digit}*\.?{digit}+
 letter      [a-zA-Z]
-identifier  {letter}+
+word        ({letter}|{digit})+
+punctuation [/\[.,\/#!$%\^&\*;:{}=\-_`~()\]]
 newline     \n
 whitespace  [ \t]+
 
 %%
 
-"<"({letter}|{digit})+">"   {return OPEN;} //missing support for attributes
-"</"({letter}|{digit})+">"  {return CLOSE;}
-'?\b[0-9A-Za-z\']+\b'?      {return APOSTROPHIZED;}
-({letter}|{digit})+         {return WORD;}
-[-+]?[0-9]*\.?[0-9]+        {return NUMBER;}
-{newline}       {lineno++;}
-{whitespace}    {/* skip whitespace */}
-"{"[^\}]*"}"    {/* skip comments */}
-.               {return ERROR;}
+"<"{word}">"                {return OPEN;} //missing support for attributes
+"</"{word}">"               {return CLOSE;}
+{word}\'{word}(\'{word})?   {return APOSTROPHIZED;}
+{word}\-{word}(\-{word})*   {return HYPHENATED;}
+{number}                    {return NUMBER;}
+{word}                      {return WORD;}
+{punctuation}               {return PUNCTUATION;}
+{newline}                   {lineno++;}
+{whitespace}                {/* skip whitespace */}
+.                           {return ERROR;}
 
 %%
 
 TokenType getToken(void) { 
   static int firstTime = TRUE;
   TokenType currentToken;
-  if (firstTime) {
+  if(firstTime) {
     firstTime = FALSE;
     lineno++;
     yyin = source;
