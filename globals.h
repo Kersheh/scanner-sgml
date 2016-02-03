@@ -23,15 +23,15 @@ extern FILE* source; /* source code text file */
 extern FILE* listing; /* listing output text file */
 extern int lineno; /* source line number for listing */
 
-typedef enum
-   { /* book-keeping tokens */
-     ENDFILE,
-     /* tags */
-     OPEN, CLOSE, 
-     /* tokens */
-     WORD, NUMBER, APOSTROPHIZED, HYPHENATED, PUNCTUATION,
-     /* other */
-     ERROR
-   } TokenType;
+typedef enum { 
+  /* book-keeping tokens */
+  ENDFILE,
+  /* tags */
+  OPEN, CLOSE, 
+  /* tokens */
+  WORD, NUMBER, APOSTROPHIZED, HYPHENATED, PUNCTUATION,
+  /* other */
+  ERROR
+} TokenType;
 
 #endif

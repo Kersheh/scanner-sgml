@@ -7,10 +7,9 @@
 #include "globals.h"
 #include "util.h"
 
-/* prints a token and its lexeme to the listing file
- */
-void printToken( int token, const char* tokenString )
-{ switch (token) {
+/* prints a token and its lexeme to the listing file */
+void printToken(int token, const char* tokenString) { 
+  switch (token) {
     case ENDFILE: 
       break;
     case OPEN:

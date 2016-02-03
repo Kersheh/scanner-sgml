@@ -9,7 +9,7 @@
 #include "scan.h"
 
 /* lexeme of identifier or reserved word */
-char tokenString[MAXTOKENLEN+1];
+char tokenString[MAXTOKENLEN + 1];
 %}
 
 digit       [0-9]
@@ -33,11 +33,11 @@ whitespace  [ \t]+
 
 %%
 
-TokenType getToken(void)
-{ static int firstTime = TRUE;
+TokenType getToken(void) { 
+  static int firstTime = TRUE;
   TokenType currentToken;
-  if (firstTime)
-  { firstTime = FALSE;
+  if (firstTime) {
+    firstTime = FALSE;
     lineno++;
     yyin = source;
     yyout = listing;

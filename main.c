@@ -13,13 +13,11 @@ FILE * source;
 FILE * listing;
 FILE * code;
 
-int main( int argc, char * argv[] )
-{ 
+int main(int argc, char * argv[]) { 
   TokenType ttype;
   source = stdin;
   listing = stdout; 
-  while( (ttype=getToken())!= ENDFILE )
-    printToken( ttype, tokenString );
+  while((ttype=getToken()) != ENDFILE)
+    printToken(ttype, tokenString);
   return 0;
 }
-

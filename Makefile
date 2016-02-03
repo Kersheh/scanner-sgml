@@ -3,7 +3,6 @@
 #
 
 CC = gcc
-CFLAGS = 
 OBJS = lex.yy.o util.o main.o
 
 scanner: $(OBJS)
