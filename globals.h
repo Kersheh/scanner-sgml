@@ -1,6 +1,6 @@
 /****************************************************/
 /* File: globals.h                                  */
-/* Global types and vars for the SGML               */
+/* Global types and vars for SGML.                  */
 /****************************************************/
 
 #ifndef _GLOBALS_H_

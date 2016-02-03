@@ -1,7 +1,6 @@
 /****************************************************/
 /* File: util.c                                     */
-/* Utility function implementation                  */
-/* for the SGML                                     */
+/* Utility function implementation for SGML.        */
 /****************************************************/
 
 #include "globals.h"

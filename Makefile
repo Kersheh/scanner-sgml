@@ -1,15 +1,16 @@
-#
 # Makefile for SGML scanner using flex
-#
 
 CC = gcc
-OBJS = lex.yy.o util.o main.o
+OBJS = lex.yy.o util.o stack.o main.o
 
 scanner: $(OBJS)
 	$(CC) $(OBJS) -o scanner -ll
 
 main.o: main.c globals.h util.h scan.h
 	$(CC) -c main.c
+
+stack.o: stack.c stack.h
+	$(CC) -c stack.c
 
 util.o: util.c util.h globals.h
 	$(CC) -c util.c

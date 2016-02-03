@@ -1,6 +1,6 @@
 /****************************************************/
 /* File: scan.h                                     */
-/* The scanner interface for the SGML               */
+/* The scanner interface for SGML.                  */
 /****************************************************/
 
 #ifndef _SCAN_H_

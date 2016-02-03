@@ -1,6 +1,6 @@
 /****************************************************/
 /* File: main.c                                     */
-/* Main program for the SGML scanner                */
+/* Main program for the SGML scanner.               */
 /****************************************************/
 
 #include "globals.h"

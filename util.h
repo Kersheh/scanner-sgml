@@ -1,6 +1,6 @@
 /****************************************************/
 /* File: util.h                                     */
-/* Utility functions for the SGML                   */
+/* Utility functions for SGML.                      */
 /****************************************************/
 
 #ifndef _UTIL_H_
