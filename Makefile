@@ -15,11 +15,17 @@ main.o: main.c globals.h util.h scan.h
 util.o: util.c util.h globals.h
 	$(CC) $(CFLAGS) -c util.c
 
-lex.yy.c: sgml.l
-	flex sgml.l
+lex.yy.c: sgml.lex
+	flex sgml.lex
 
 lex.yy.o: lex.yy.c globals.h util.h
 	$(CC) $(CFLAGS) -c lex.yy.c
 
 clean:
 	rm -f scanner $(OBJS) lex.yy.c
+
+test:
+	./scanner < data/test.txt
+
+run:
+	./scanner < data/newsdata.txt

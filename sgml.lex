@@ -1,5 +1,5 @@
 /****************************************************/
-/* File: sgml.l                                     */
+/* File: sgml.lex                                   */
 /* Flex specification for SGML                      */
 /****************************************************/
 
@@ -21,27 +21,11 @@ whitespace  [ \t]+
 
 %%
 
-"if"            {return IF;}
-"then"          {return THEN;}
-"else"          {return ELSE;}
-"end"           {return END;}
-"repeat"        {return REPEAT;}
-"until"         {return UNTIL;}
-"read"          {return READ;}
-"write"         {return WRITE;}
-":="            {return ASSIGN;}
-"="             {return EQ;}
-"<"             {return LT;}
-">"   {return GT;}
-"+"             {return PLUS;}
-"-"             {return MINUS;}
-"*"             {return TIMES;}
-"/"             {return OVER;}
-"("             {return LPAREN;}
-")"             {return RPAREN;}
-";"             {return SEMI;}
-{number}        {return NUM;}
-{identifier}    {return ID;}
+"<"({letter}|{digit})+">"   {return OPEN;} //missing support for attributes
+"</"({letter}|{digit})+">"  {return CLOSE;}
+'?\b[0-9A-Za-z\']+\b'?      {return APOSTROPHIZED;}
+({letter}|{digit})+         {return WORD;}
+[-+]?[0-9]*\.?[0-9]+        {return NUMBER;}
 {newline}       {lineno++;}
 {whitespace}    {/* skip whitespace */}
 "{"[^\}]*"}"    {/* skip comments */}

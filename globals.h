@@ -26,12 +26,10 @@ extern int lineno; /* source line number for listing */
 typedef enum
    { /* book-keeping tokens */
      ENDFILE,
-     /* reserved keywords */
-     IF, THEN, ELSE, END, REPEAT, UNTIL, READ, WRITE,
-     /* symbols */
-     ASSIGN, EQ, LT, GT, PLUS, MINUS, TIMES, OVER, LPAREN, RPAREN, SEMI,
-     /* open token types */
-     ID, NUM,
+     /* tags */
+     OPEN, CLOSE, 
+     /* tokens */
+     WORD, NUMBER, APOSTROPHIZED, HYPHENATED, PUNCTUATION,
      /* other */
      ERROR
    } TokenType;
