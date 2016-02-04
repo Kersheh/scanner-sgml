@@ -1,4 +1,4 @@
-<DOC>
+<DOC left="align">
 <H1>
 New Year's Day
 </H1>

@@ -16,14 +16,15 @@ char tokenString[MAXTOKENLEN + 1];
 digit       [0-9]
 number      [-+]?{digit}*\.?{digit}+
 letter      [a-zA-Z]
-word        ({letter}|{digit})+
-punctuation [/\[.,\/#!$%\^&\*;:{}=\-_`~()\]]
+word        ({letter}|{digit}|-)+
+attribute   {word}[ ]?=[ ]?\"{word}\"
+punctuation [/\[.,\/#!$%\^&\*;:{}=\-_`"'<>\?~()\]]
 newline     \n
 whitespace  [ \t]+
 
 %%
 
-\<{word}\>                  {return OPEN;} //missing support for attributes
+\<{word}([ ]{attribute})?\> {return OPEN;} //missing support for attributes
 \<\/{word}\>                {return CLOSE;}
 {word}\'{word}(\'{word})?   {return APOSTROPHIZED;}
 {word}\-{word}(\-{word})*   {return HYPHENATED;}

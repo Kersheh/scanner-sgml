@@ -19,18 +19,26 @@ void stringToUppercase(char* str) {
 char* formatToken(int token, const char* str) {
   int i;
   char *trim = malloc(sizeof(str));
+  /* if open tag, strip string and tokenize */
   if(token == 1) {
     for(i = 0; i < strlen(str) - 2; i++) {
       trim[i] = str[i + 1];
+      /* if tag contains attribute, end tokenization */
+      if(trim[i] == ' ') {
+        trim[i] = '\0';
+        break;
+      }
     }
     trim[strlen(str) - 2] = '\0';
   }
+  /* if close tag, strip string and tokenize */
   if(token == 2) {
     for(i = 0; i < strlen(str) - 3; i++) {
       trim[i] = str[i + 2];
     }
     trim[strlen(str) - 3] = '\0';
   }
+  /* normalize tag tokens to upper case */
   stringToUppercase(trim);
   return trim;
 }
