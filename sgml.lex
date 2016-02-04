@@ -4,6 +4,7 @@
 /****************************************************/
 
 %{
+#include <stdio.h>
 #include "globals.h"
 #include "util.h"
 #include "scan.h"
@@ -22,8 +23,8 @@ whitespace  [ \t]+
 
 %%
 
-"<"{word}">"                {return OPEN;} //missing support for attributes
-"</"{word}">"               {return CLOSE;}
+\<{word}\>                  {return OPEN;} //missing support for attributes
+\<\/{word}\>                {return CLOSE;}
 {word}\'{word}(\'{word})?   {return APOSTROPHIZED;}
 {word}\-{word}(\-{word})*   {return HYPHENATED;}
 {number}                    {return NUMBER;}
@@ -45,6 +46,14 @@ TokenType getToken(void) {
     yyout = listing;
   }
   currentToken = yylex();
+  /* strip open tokens of brackets */
+  if(currentToken == 1) {
+
+  }
+  /* strip close tokens of brackets */
+  if(currentToken == 2) {
+
+  }
   strncpy(tokenString, yytext, MAXTOKENLEN);
   return currentToken;
 }

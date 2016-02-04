@@ -12,8 +12,7 @@
 /* tokenString array stores the lexeme of each token */
 extern char tokenString[MAXTOKENLEN + 1];
 
-/* returns the next token in source file
- */
+/* returns the next token in source file */
 TokenType getToken(void);
 
 #endif
