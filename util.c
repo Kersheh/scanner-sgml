@@ -7,6 +7,7 @@
 #include "globals.h"
 #include "util.h"
 
+/* convert string tp uppercase */
 void stringToUppercase(char* str) {
   int i;
   for(i = 0; i < strlen(str); i++) {
@@ -14,6 +15,7 @@ void stringToUppercase(char* str) {
   }
 }
 
+/* format token stripping brackets */
 char* formatToken(int token, const char* str) {
   int i;
   char *trim = malloc(sizeof(str));

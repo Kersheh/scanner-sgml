@@ -24,7 +24,11 @@ int main(int argc, char * argv[]) {
 
   while((ttype=getToken()) != ENDFILE) {
     printToken(ttype, tokenString);
-    push(scannerStack, tokenString);
+    if(ttype == 1) push(scannerStack, formatToken(ttype, tokenString));
+    if(ttype == 2) {
+      printf("Popped: %s\n", top(scannerStack));
+      pop(scannerStack);
+    }
   }
 
   destroyStack(&scannerStack);
