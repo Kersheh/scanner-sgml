@@ -1,0 +1,6 @@
+# TEST 3
+<doc>
+<section>nothing to see here</section>
+<irrelevant>this should break all tags as everything else is considered irrelevant
+<p>this won't be recognized as relevant with the open irrelevant tag not closed</p>
+</doc>

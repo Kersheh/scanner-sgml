@@ -25,11 +25,16 @@ clean:
 	rm -f scanner $(OBJS) lex.yy.c sample.out
 
 test:
-	./scanner < data/test1.txt
-	./scanner < data/test2.txt
+	@echo "TEST 1 -----------------------------------------------"
+	@./scanner < data/test1.txt
+	@echo "TEST 2 -----------------------------------------------"
+	@./scanner < data/test2.txt
+	@echo "TEST 3 -----------------------------------------------"
+	@./scanner < data/test3.txt
 
 run:
-	./scanner < data/newsdata.txt
+	@./scanner < data/newsdata.txt
 
 run_out:
-	./scanner < data/newsdata.txt > sample.out
+	@echo "Output printed to sample.out"
+	@./scanner < data/newsdata.txt > sample.out
