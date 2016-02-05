@@ -14,7 +14,6 @@ int compareToken(char* str) {
     "TEXT", "DATE", "DOC", "DOCNO", "HEADLINE", "LENGTH", "P"
   };
   int i;
-  //if(strcmp(str, relevantTokens[0])) return 0;
   for(i = 0; i < REL_TOKENS; i++) if(!strcmp(str, relevantTokens[i])) return 1;
   return 0;
 }
@@ -61,10 +60,10 @@ void printToken(int token, const char* tokenString) {
     case ENDFILE: 
       break;
     case OPEN:
-      fprintf(listing, "OPEN-%s\n", formatToken(token, tokenString));
+      fprintf(listing, "OPEN-%s\n", formatToken(token, tokenString)); //format open-tag tokens before print
       break;
     case CLOSE:
-      fprintf(listing, "CLOSE-%s\n", formatToken(token, tokenString));
+      fprintf(listing, "CLOSE-%s\n", formatToken(token, tokenString)); //format close-tag tokens before print
       break;
     case WORD:
       fprintf(listing, "WORD(%s)\n", tokenString);

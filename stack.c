@@ -38,10 +38,6 @@ void push(struct stack_t *theStack, char *value) {
     theStack->head = entry;
     theStack->stackSize++;
   }
-  else
-  {
-    // handle error here
-  }
 }
 
 /* Get the value at the top of the stack */

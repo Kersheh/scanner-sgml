@@ -21,7 +21,6 @@ int main(int argc, char * argv[]) {
   listing = stdout;
 
   struct stack_t *scannerStack = newStack(); //track tags
-  struct stack_t *errorStack = newStack(); //track failed closing tags
 
   int relevant = 0; //track if current tag section is relevant to print -- 0 is relevant, > 0 is irrelevant, < 0 is no tags
 
@@ -59,7 +58,6 @@ int main(int argc, char * argv[]) {
     pop(scannerStack);
   }
 
-  destroyStack(&errorStack);
   destroyStack(&scannerStack);
   return 0;
 }

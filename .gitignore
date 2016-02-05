@@ -1,2 +1,6 @@
 .DS_Store
 WarmupAssignment.pdf
+scanner
+*.o
+lex.yy.c
+sample.out
