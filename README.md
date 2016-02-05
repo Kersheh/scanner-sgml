@@ -31,3 +31,6 @@ To simply cleanup the compiled files and scanned output, run:
 ```sh
 make clean
 ```
+# Credit
+To save time developing my own stack data structure, code was used from:
+http://stackoverflow.com/questions/1919975/creating-a-stack-of-strings-in-c
