@@ -22,10 +22,14 @@ lex.yy.o: lex.yy.c globals.h util.h
 	$(CC) -c lex.yy.c
 
 clean:
-	rm -f scanner $(OBJS) lex.yy.c
+	rm -f scanner $(OBJS) lex.yy.c sample.out
 
 test:
-	./scanner < data/test.txt
+	./scanner < data/test1.txt
+	./scanner < data/test2.txt
 
 run:
 	./scanner < data/newsdata.txt
+
+run_out:
+	./scanner < data/newsdata.txt > sample.out

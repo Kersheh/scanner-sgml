@@ -1,0 +1,11 @@
+# TEST 2
+<doc>
+<section>This should not print.</section>
+<headline attribute="test">Test attribute field</headline>
+
+<headline>no closing headline: should break doc closing tag
+<date>2015</date>
+<section>irrelevant<p>test</p></section>
+</doc>
+<p>close-doc cant match open-doc with broken headline in stack</p>
+</doc>
