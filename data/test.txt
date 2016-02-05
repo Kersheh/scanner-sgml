@@ -1,16 +1,6 @@
-<DOC left="align">
-<H1>
-New Year's Day
-</H1>
-<DATE>12/30/2015</DATE>
-<P>
-O'Reilly's
+<TEXT>
+Test
+</TEXT>
 <TEST>
-This-is-a-hyphen-test
----
+This should not print
 </TEST>
-3.1415
-.3
-3.
-</P>
-</DOC>

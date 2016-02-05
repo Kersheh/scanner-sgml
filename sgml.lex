@@ -16,15 +16,15 @@ char tokenString[MAXTOKENLEN + 1];
 digit       [0-9]
 number      [-+]?{digit}*\.?{digit}+
 letter      [a-zA-Z]
-word        ({letter}|{digit}|-)+
-attribute   {word}[ ]?=[ ]?\"{word}\"
+word        ({letter}|{digit})+({letter}|{digit}|-)*
+attribute   {word}[ ]*=[ ]*\"{word}\"
 punctuation [/\[.,\/#!$%\^&\*;:{}=\-_`"'<>\?~()\]]
 newline     \n
 whitespace  [ \t]+
 
 %%
 
-\<{word}([ ]{attribute})?\> {return OPEN;} //missing support for attributes
+\<{word}[ ]*{attribute}?\>  {return OPEN;} //missing support for attributes
 \<\/{word}\>                {return CLOSE;}
 {word}\'{word}(\'{word})?   {return APOSTROPHIZED;}
 {word}\-{word}(\-{word})*   {return HYPHENATED;}
@@ -47,14 +47,6 @@ TokenType getToken(void) {
     yyout = listing;
   }
   currentToken = yylex();
-  /* strip open tokens of brackets */
-  if(currentToken == 1) {
-
-  }
-  /* strip close tokens of brackets */
-  if(currentToken == 2) {
-
-  }
   strncpy(tokenString, yytext, MAXTOKENLEN);
   return currentToken;
 }

@@ -6,6 +6,8 @@
 #ifndef _UTIL_H_
 #define _UTIL_H_
 
+/* compare token to relevant tokens */
+int compareToken(char* str);
 /* strip tags of brackets and convert uppercase */
 char* formatToken(int token, const char* str);
 

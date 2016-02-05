@@ -6,6 +6,18 @@
 #include <string.h>
 #include "globals.h"
 #include "util.h"
+#define REL_TOKENS 7
+
+/* compare token to relevant tokens */
+int compareToken(char* str) {
+  char *relevantTokens[] = {
+    "TEXT", "DATE", "DOC", "DOCNO", "HEADLINE", "LENGTH", "P"
+  };
+  int i;
+  //if(strcmp(str, relevantTokens[0])) return 0;
+  for(i = 0; i < REL_TOKENS; i++) if(!strcmp(str, relevantTokens[i])) return 1;
+  return 0;
+}
 
 /* convert string tp uppercase */
 void stringToUppercase(char* str) {
@@ -18,7 +30,7 @@ void stringToUppercase(char* str) {
 /* format token stripping brackets */
 char* formatToken(int token, const char* str) {
   int i;
-  char *trim = malloc(sizeof(str));
+  char *trim = (char*)malloc(sizeof(str));
   /* if open tag, strip string and tokenize */
   if(token == 1) {
     for(i = 0; i < strlen(str) - 2; i++) {
