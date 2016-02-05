@@ -23,7 +23,7 @@ int main(int argc, char * argv[]) {
   struct stack_t *scannerStack = newStack(); //track tags
   struct stack_t *errorStack = newStack(); //track failed closing tags
 
-  int relevant = 0; //track if current tag section is relevant to print -- 0 is relevant, > 0 is irrelevant
+  int relevant = 0; //track if current tag section is relevant to print -- 0 is relevant, > 0 is irrelevant, < 0 is no tags
 
   while((ttype=getToken()) != ENDFILE) {
     /* if open tag, push onto stack */
@@ -35,8 +35,9 @@ int main(int argc, char * argv[]) {
     /* if close tag, check top of stack for matching open tag */
     if(ttype == 2) {
       /* if close tag does not match top of stack, report error */
-      if(strcmp(top(scannerStack), formatToken(ttype, tokenString))) {
-        printf("-- Error: closing tag %s with no matching open tag at line %d\n", formatToken(ttype, tokenString), lineno);
+      if(top(scannerStack) == NULL || strcmp(top(scannerStack), formatToken(ttype, tokenString))) {
+        if(relevant == 0) printf("-- Error: CLOSE-TAG </%s> with no matching open tag at top of stack at line %d\n", formatToken(ttype, tokenString), lineno);
+        continue;
       }
       /* if close tag matches top of stack, pop */
       else {
@@ -48,12 +49,13 @@ int main(int argc, char * argv[]) {
         }
       }
     }
-    /* print tokens if relevant */
-    if(relevant == 0) printToken(ttype, tokenString);
+    /* print tokens if relevant and tag is on stack */
+    if(relevant == 0 && top(scannerStack) != NULL) printToken(ttype, tokenString);
   }
 
+  /* print off remaining tags in stack as errors */
   while(top(scannerStack)) {
-    printf("-- Error: opening tag %s with no closing tag left over in stack\n", top(scannerStack));
+    printf("-- Error: OPEN-TAG <%s> with no closing tag left over in stack\n", top(scannerStack));
     pop(scannerStack);
   }
 
